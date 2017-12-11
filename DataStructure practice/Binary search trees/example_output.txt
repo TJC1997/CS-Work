@@ -1,0 +1,18 @@
+$ ./test
+
+== BST size: 13
+
+== BST height: 3
+
+== Checking path sums the BST should contain:
+  == 120: all good
+  == 136: all good
+  == 200: all good
+  == 328: all good
+  == 376: all good
+  == 392: all good
+
+== Checking path sums the BST should NOT contain:
+  == found 0 paths sums we shouldn't have found
+
+== BST contents (in order):    8   16   24   32   48   56   64   80   88   96  104  112  120

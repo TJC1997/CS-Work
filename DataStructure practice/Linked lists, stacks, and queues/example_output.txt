@@ -1,0 +1,33 @@
+$ ./test
+
+===========================
+== Testing list_reverse()
+===========================
+
+== Original list contents:    0    1    4    9   16   25   36   49   64   81  100  121  144  169  196  225
+== Reversed list contents:  225  196  169  144  121  100   81   64   49   36   25   16    9    4    1    0
+
+== Original length=1 list contents:   16
+== Reversed length=1 list contents:   16
+
+== Original null list contents: (null)
+== Reversed null list contents: (null)
+
+
+=============================================
+== Testing queue-from-stacks implementation
+=============================================
+
+== Enqueueing some into queue-from-stacks:    1    3    5    7    9   11   13   15   17   19   21   23   25   27   29   31
+== Dequeueing some from queue-from-stacks:    1    3    5    7    9   11   13   15
+== Enqueueing more into queue-from-stacks:   33   35   37   39   41   43   45   47
+== Dequeueing rest from queue-from-stacks:   17   19   21   23   25   27   29   31   33   35   37   39   41   43   45   47
+
+=============================================
+== Testing stack-from-queues implementation
+=============================================
+
+== Pushing some onto stack-from-queues:    0    2    4    6    8   10   12   14   16   18   20   22   24   26   28   30
+== Popping some from stack-from-queues:   30   28   26   24   22   20   18   16
+== Pushing more onto stack-from-queues:   32   34   36   38   40   42   44   46
+== Dequeueing rest from stack-from-queues:   46   44   42   40   38   36   34   32   14   12   10    8    6    4    2    0
