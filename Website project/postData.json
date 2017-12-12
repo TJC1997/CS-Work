@@ -1,0 +1,31 @@
+[{
+		"userName": "John Doe",
+		"NumDislikes": "10",
+		"postTitle": "A Prayer for All",
+		"postContent": "I hope we all pass CS290!",
+		"comments": [{
+				"commentUsername": "Rufus",
+				"commentContent": "You'll never pass."
+			},
+			{
+				"commentUsername": "Ronda",
+				"commentContent": "Why are you even a CS major?"
+			}
+		]
+	},
+	{
+		"userName": "Jane Doe",
+		"NumDislikes": "12",
+		"postTitle": "My First Post!",
+		"postContent": "Just finished Fall Term #winteriscoming",
+		"comments": [{
+				"commentUsername": "Dufus",
+				"commentContent": "And hopefully last."
+			},
+			{
+				"commentUsername": "Wonda",
+				"commentContent": "Who knew you could type?"
+			}
+		]
+	}
+]

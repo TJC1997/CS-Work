@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>FaceIT</title>
+	<link rel="shortcut icon" href="favicon.png">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<!-- BODY FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<!-- NAV FONT -->
+	<link rel="stylesheet" href="style.css">
+	<script src="index.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+	<!-- HEADER: TITLE AND NAV BAR -->
+	<header>
+		<img src="header_red.jpg">
+		<nav>
+			<button id="change-username-button" class="header-button">Username</button>
+			<button id="add-post-button" class="header-button">Add Post</button>
+		</nav>
+	</header>
+
+	<!-- MAIN CONTENT: POSTS AND POPUPS -->
+	<main id="content">
+
+		<!-- SECTION: POSTS -->
+		<section id="posts">
+
+			<!-- POST OUTLINE: BUTTONS, CONTENT, COMMENTS -->
+			<div class="post" data-dislikes="0">
+				<div class="post-container">
+					<div class="button-container">
+						<button class="dislike-button">
+							<div>0</div>
+							<div>dislike</div>
+						</button>
+						<button class="comment-button">add comment</button>
+					</div>
+					<div class="content-container">
+						<h2 class="post-title">Cras Ornare Arcu</h2>
+						<p class="username">iSuck</p>
+						<p class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae. Eget duis at tellus at. Suscipit adipiscing
+							bibendum est ultricies. Massa massa ultricies mi quis hendrerit dolor magna eget. Etiam tempor orci eu lobortis. Pulvinar
+							neque laoreet suspendisse interdum consectetur libero id faucibus. Sit amet luctus venenatis lectus magna fringilla
+							urna porttitor. Suscipit adipiscing bibendum est ultricies integer quis auctor elit sed. Tincidunt nunc pulvinar sapien
+							et ligula ullamcorper malesuada proin. Integer feugiat scelerisque varius morbi enim nunc. Ultricies mi quis hendrerit
+							dolor magna eget est lorem. Eu non diam phasellus vestibulum lorem. In ornare quam viverra orci sagittis. Varius morbi
+							enim nunc faucibus a pellentesque sit amet. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras.</p>
+					</div>
+				</div>
+				<div class="comment-container">
+					<div class="comment">
+						<p class="username">WhyAmILikeThis420</p>
+						<p class="comment-content">wtf</p>
+					</div>
+					<div class="comment">
+						<p class="username">CatzRCool</p>
+						<p class="comment-content">Who even talks like this anymore?</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="post" data-dislikes="40">
+				<div class="post-container">
+					<div class="button-container">
+						<button class="dislike-button">
+							<div>0</div>
+							<div>dislike</div>
+						</button>
+						<button class="comment-button">add comment</button>
+					</div>
+					<div class="content-container">
+						<h2 class="post-title">Cras Ornare Arcu</h2>
+						<p class="username">wut</p>
+						<p class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+							aliqua. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae. Eget duis at tellus at. Suscipit adipiscing
+							bibendum est ultricies. Massa massa ultricies mi quis hendrerit dolor magna eget. Etiam tempor orci eu lobortis. Pulvinar
+							neque laoreet suspendisse interdum consectetur libero id faucibus. Sit amet luctus venenatis lectus magna fringilla
+							urna porttitor. Suscipit adipiscing bibendum est ultricies integer quis auctor elit sed. Tincidunt nunc pulvinar sapien
+							et ligula ullamcorper malesuada proin. Integer feugiat scelerisque varius morbi enim nunc. Ultricies mi quis hendrerit
+							dolor magna eget est lorem. Eu non diam phasellus vestibulum lorem. In ornare quam viverra orci sagittis. Varius morbi
+							enim nunc faucibus a pellentesque sit amet. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras.</p>
+					</div>
+				</div>
+				<div class="comment-container">
+					<div class="comment">
+						<p class="username">dootdoot</p>
+						<p class="comment-content">This is comment #1.</p>
+					</div>
+					<div class="comment">
+						<p class="username">1337h4x0r</p>
+						<p class="comment-content">This is comment #2.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<!-- ADD POST POPUP -->
+	<div id="add-post-container" class="masked">
+		<div class="popup-header">
+			<h2>Create New Post</h2>
+		</div>
+
+		<div class="popup-content">
+			<label for="post-title-input">Post Title</label>
+			<input type="text" id="post-title-input">
+			<br>
+			<label for="post-content-input">Post Content</label>
+			<input type="text" id="post-content-input">
+		</div>
+
+		<div class="popup-buttons-container">
+			<button id="create-post-button">SUBMIT</button>
+			<button id="cancel-post-button">CANCEL</button>
+		</div>
+	</div>
+
+	<!-- CHANGE USERNAME POPUP -->
+	<div id="change-username-container" class="masked">
+		<div class="popup-header">
+			<h2>Change Username</h2>
+		</div>
+
+		<div class="popup-content">
+			<label for="username-input">Username</label>
+			<input type="text" id="username-input">
+		</div>
+
+		<div class="popup-buttons-container">
+			<button id="confirm-username-change">CHANGE</button>
+			<button id="cancel-username-change">CANCEL</button>
+		</div>
+	</div>
+
+	<!-- ADD COMMENT POPUP -->
+	<div id="add-comment-container" class="masked">
+		<div class="popup-header">
+			<h2>Add Comment</h2>
+		</div>
+
+		<div class="popup-content">
+			<label for="comment-input">Comment</label>
+			<input type="text" id="comment-input">
+		</div>
+
+		<div class="popup-buttons-container">
+			<button id="create-comment-button">SUBMIT</button>
+			<button id="cancel-comment-button">CANCEL</button>
+		</div>
+	</div>
+</body>
+
+</html>
