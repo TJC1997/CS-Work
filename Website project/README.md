@@ -1,4 +1,4 @@
-# \#Y010$W@G1N$
+# This is the website project i did with my 3 teammates. I did all the JavaScript parts by myself. 
 
 # **[\*\*Please check out this project page for to-dos and other notes\*\*](https://goo.gl/ocKu3V)**
 
