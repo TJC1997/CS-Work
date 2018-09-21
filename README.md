@@ -1,7 +1,8 @@
 # Yuhang Chen (Tony)
 ## Oregon State University
 ## Computer Science
-## Sophomore student
+## GPA:3.8
+## Junior student
 ## Trying to find a summer intern
 
 ### Here are some CS work i did from freshman year until now
