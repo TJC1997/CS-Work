@@ -1,7 +1,7 @@
 # Yuhang Chen (Tony)
 ## Oregon State University
 ## Computer Science
-## GPA:3.8
+## CS Core GPA:3.86
 ## Junior student
 ## Trying to find a summer intern
 
