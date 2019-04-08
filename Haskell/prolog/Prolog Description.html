@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/hw/hw6.html -->
+<html lang="en" class="gr__web_engr_oregonstate_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Eric Walkingshaw  - CS 381 -- Homework 6 </title>
+  
+  <link href="./Prolog Description_files/css" rel="stylesheet" type="text/css">
+  <link href="./Prolog Description_files/css(1)" rel="stylesheet" type="text/css">
+  <link href="./Prolog Description_files/all.css" rel="stylesheet" type="text/css">
+  <link href="./Prolog Description_files/print.css" rel="stylesheet" type="text/css" media="print">
+  <link href="http://web.engr.oregonstate.edu/~walkiner/images/LambdaLand-Bold.png" rel="icon" type="image/png" sizes="610x610">
+  <script async="" src="./Prolog Description_files/analytics.js.下载"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-55224698-1','auto');
+  ga('send','pageview');
+</script>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body onload="setEmail()" data-gr-c-s-loaded="true" style=""><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div id="page">
+
+<div id="header">
+  <div class="container">
+<ul class="nav-list">
+  <li class="nav-elem nav-left nav-head">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/">Eric Walkingshaw</a>
+  </li>
+  <!--
+  <li class="nav-elem nav-left ">
+    <a href="/news.html">News</a>
+  </li>
+  -->
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/teaching.html">Teaching</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/advising.html">Advising</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/research.html">Research</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/publications.html">Publications</a>
+  </li>
+  <!--
+  <li class="nav-elem nav-left ">
+    <a href="/blog.html">Blog</a>
+  </li>
+  -->
+  <li class="nav-elem nav-right">
+    <a href="https://github.com/walkie">GitHub</a>
+  </li>
+  <li class="nav-elem nav-right">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/CV-Walkingshaw.pdf">CV</a>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<div id="content">
+  <div class="container">
+<style>
+.grammar td {
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+.center table {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<h1 id="homework-6">Homework #6</h1>
+<p><strong>Due: Fri, Mar 15, 10:59pm</strong></p>
+<div class="bold-code">
+<h2 id="how-to-submit">How to Submit</h2>
+<ul>
+<li><p>Submit one solution <em>per team</em> (each team can have 1–3 members), through <strong><a href="http://engr.oregonstate.edu/teach">TEACH</a></strong>. Put the names and ONID IDs of all team members as a comment at the top of the file.</p></li>
+<li><p>Your submission should consist of a file named <code>&lt;your-username&gt;.pl</code>.</p></li>
+<li><p>Your Prolog file <em>must load without errors</em> in SWI-Prolog. Put all non-working parts of your solution in comments!</p></li>
+<li><p>If you can’t solve a problem, you can get partial credit by describing in comments what you tried and where you got stuck.</p></li>
+</ul>
+<h2 id="description">Description</h2>
+<p>Template: <strong><a href="https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/code/hw6template.pl">hw6template.pl</a></strong></p>
+<h2 id="part-1.-family-relations">Part 1. Family relations</h2>
+<p>In this part, you will define several Prolog predicates that describe family relationships. Your building blocks will be four basic predicates: <code>female/1</code>, <code>male/1</code>, <code>married/2</code>, and <code>parent/2</code>. The provided template uses these basic predicates to encode the following family tree, which you’ll use for testing your own definitions.</p>
+<div style="text-align:center">
+<p><img src="./Prolog Description_files/Simpsons.png" alt="Simpson&#39;s Family Tree"></p>
+</div>
+<p>For each predicate, I have provided some example queries and the unifiers (solutions) that should be produced, or <code>false</code> if no unifier exists. It is not important what order the unifiers are produced in, and it is OK if a unifier is produced more than once. However, for all queries, <em>all valid unifiers</em> should eventually be produced, <em>no invalid unifiers</em> should be produced, and the query should not induce an infinite loop.</p>
+<ol type="1">
+<li><p>Define a predicate <code>child/2</code> that inverts the parent relationship.</p>
+<pre><code>?- child(marge,X).
+X = clancy ;
+X = jackie .
+
+?- child(X,marge).
+X = bart ;
+X = lisa ;
+X = maggie .</code></pre></li>
+<li><p>Define two predicates <code>isMother/1</code> and <code>isFather/1</code>.</p>
+<pre><code>?- isMother(selma).
+true .
+
+?- isMother(patty).
+false .
+
+?- isFather(X).
+X = abe ;
+X = clancy ;
+X = homer .</code></pre></li>
+<li><p>Define a predicate <code>grandparent/2</code>.</p>
+<pre><code>?- grandparent(abe,X).
+X = bart ;
+X = lisa ;
+X = maggie .
+
+?- grandparent(X,ling).
+X = clancy ;
+X = jackie .</code></pre></li>
+<li><p>Define a predicate <code>sibling/2</code>. Siblings share at least one parent.</p>
+<pre><code>?- sibling(homer,X).
+X = herb .
+
+?- sibling(X,lisa).
+X = bart ;
+X = maggie .</code></pre></li>
+<li><p>Define two predicates <code>brother/2</code> and <code>sister/2</code>.</p>
+<pre><code>?- sister(lisa,X).
+X = bart ;
+X = maggie .
+
+?- sister(X,lisa).
+X = maggie .
+
+?- brother(bart,X).
+X = lisa ;
+X = maggie .
+
+?- brother(X,bart).
+false.</code></pre></li>
+<li><p>Define a predicate <code>siblingInLaw/2</code>. A sibling-in-law is either married to a sibling or the sibling of a spouse.</p>
+<pre><code>?- siblingInLaw(selma,X).
+X = homer .
+
+?- siblingInLaw(marge,X).
+X = herb .
+
+?- siblingInLaw(X,homer).
+X = patty ;
+X = selma .</code></pre></li>
+</ol>
+<!--
+ 7. Define two predicates `brotherInLaw/2` and `sisterInLaw/2`.
+        
+        ?- sisterInLaw(X,homer).
+        X = patty ;
+        X = selma .
+        
+        ?- brotherInLaw(herb,X).
+        X = marge .
+-->
+<ol start="7" type="1">
+<li><p>Define two predicates <code>aunt/2</code> and <code>uncle/2</code>. Your definitions of these predicates should include aunts and uncles by marriage.</p>
+<pre><code>?- aunt(patty,X).
+X = bart ;
+X = lisa ;
+X = maggie ;
+X = ling .
+
+?- uncle(X,ling).
+X = homer .</code></pre></li>
+<li><p>Define the predicate <code>cousin/2</code>.</p>
+<pre><code>?- cousin(maggie,X).
+X = ling .
+
+?- cousin(X,ling).
+X = bart ;
+X = lisa ;
+X = maggie .</code></pre></li>
+<li><p>Define the predicate <code>ancestor/2</code>.</p>
+<pre><code>?- ancestor(abe,X).
+X = herb ;
+X = homer ;
+X = bart ;
+X = lisa ;
+X = maggie .
+
+?- ancestor(X,lisa).
+X = homer ;
+X = marge ;
+X = abe ;
+X = mona ;
+X = clancy ;
+X = jackie .</code></pre></li>
+</ol>
+<p><strong>Extra Credit:</strong> Define the predicate <code>related/2</code>. This predicate should be true for any two people connected by a family tree, no matter how distantly. Therefore, a query such as <code>related(herb,X)</code> should enumerate every other person in the tree.</p>
+<p>The challenge in this problem is structuring your predicate in a way that enumerates all members of the tree and doesn’t infinitely loop. You may want to use a helper predicate.</p>
+<p>(Note: my solution does not infinitely loop, but also never stops finding solutions. If someone can produce a better implementation, bonus bonus points!)</p>
+<h2 id="part-2.-language-implementation">Part 2. Language Implementation</h2>
+<p>In this part, you will define two predicates to implement a simple stack-based language. The syntax of the language is given below.</p>
+<div class="center grammar">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><em>num</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">(any number literal)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><em>str</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">(any string literal)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>bool</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><code>t</code> &nbsp; | &nbsp; <code>f</code></td>
+<td>boolean literals</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><em>prog</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><em>cmd</em><span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msup&gt;&lt;mi&gt;&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mstyle mathsize=&quot;1.2em&quot;&gt;&lt;mo&gt;&amp;#x2217;&lt;/mo&gt;&lt;/mstyle&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 0.647em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.499em; height: 0px; font-size: 126%;"><span style="position: absolute; clip: rect(1.342em 1000.5em 2.383em -999.998em); top: -2.23em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="msubsup" id="MathJax-Span-3"><span style="display: inline-block; position: relative; width: 0.499em; height: 0px;"><span style="position: absolute; clip: rect(3.872em 1000em 4.169em -999.998em); top: -4.015em; left: 0em;"><span class="mi" id="MathJax-Span-4"></span><span style="display: inline-block; width: 0px; height: 4.02em;"></span></span><span style="position: absolute; top: -4.363em; left: 0em;"><span class="texatom" id="MathJax-Span-5"><span class="mrow" id="MathJax-Span-6"><span class="mstyle" id="MathJax-Span-7"><span class="mrow" id="MathJax-Span-8"><span class="mo" id="MathJax-Span-9" style="font-size: 84.9%; font-family: MathJax_Main;">∗</span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.02em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.235em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 1.066em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi></mi><mrow class="MJX-TeXAtom-ORD"><mstyle mathsize="1.2em"><mo>∗</mo></mstyle></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-1">^{\large * }</script></span></td>
+<td>sequence of commands</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>cmd</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><em>num</em> &nbsp; | &nbsp; <em>str</em> &nbsp; | &nbsp; <em>bool</em></td>
+<td>push a literal onto the stack</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><code>add</code> &nbsp; | &nbsp; <code>lte</code></td>
+<td>number addition/comparison</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><code>if(</code><em>prog</em><code>,</code><em>prog</em><code>)</code></td>
+<td>conditional branching</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The language is almost identical to the stack language we implemented in Haskell earlier in the term, in <a href="https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/code/StackLang.hs">StackLang.hs</a>. A program is a list of commands, and each command has an effect on implicit program stack:</p>
+<ul>
+<li>A literal number (e.g. <code>3</code>), string (e.g. <code>"Hi there!"</code>), or boolean (i.e. <code>t</code> or <code>f</code>) is a command that simply pushes the corresponding value onto the stack.</li>
+<li>The <code>add</code> command pops two numbers off the stack and pushes their sum.</li>
+<li>The <code>lte</code> command pops two numbers off the stack and pushes <code>t</code> if the first number is the less than or equal to the second, otherwise it pushes <code>f</code>.</li>
+<li>An <code>if(P1,P2)</code> command pops a boolean value off the stack and executes either <code>P1</code> if the value is <code>t</code> or <code>P2</code> if the value is <code>f</code>.</li>
+</ul>
+<p>Note that you do not need to implement the syntax of this language directly, nor do you need to explicitly check whether a command, program, or stack is valid. The important thing is that your definitions are correct given well-formed inputs. Consider the behavior in other cases undefined.</p>
+<p>You should use Prolog lists to represent programs (i.e.&nbsp;list of commands) and stacks (i.e.&nbsp;list of number, string, and boolean values).</p>
+<ol type="1">
+<li><p>Define the predicate <code>cmd/3</code>, which describes the effect of a command on the stack. That is, the predicate <code>cmd(C,S1,S2)</code> means that executing command <code>C</code> with stack <code>S1</code> produces stack <code>S2</code>.</p>
+<pre><code>?- cmd("hello",[4],S).
+S = ["hello", 4].
+
+?- cmd(4,S,[4,"goodbye"]).
+S = ["goodbye"].
+
+?- cmd(add,[2,3,4],S).
+S = [5, 4].
+
+?- cmd(lte,[2,3,4],S).
+S = [t, 4].
+
+?- cmd(lte,[5,3,t],S).
+S = [f, t].</code></pre>
+<p>Note that I have not provided a test case for <code>if</code> yet since it depends on the <code>prog/3</code> predicate below.</p></li>
+<li><p>Define the predicate <code>prog/3</code>, which describes the effect of a program on the stack. That is, the predicate <code>prog(P,S1,S2)</code> means that executing program <code>P</code> with stack <code>S1</code> produces stack <code>S2</code>.</p>
+<pre><code>?- prog([3,4,add],[],S).
+S = [7] .
+
+?- prog([3,4,add,6,lte,9],[],S).
+S = [9, t] .
+
+?- prog([if(["foo"],[3]),4],[t,5],S).
+S = [4, "foo", 5] .
+
+?- prog([2,lte,if(["foo"],[3]),4],[1],S).
+S = [4, 3] .</code></pre></li>
+</ol>
+</div>
+<p><br></p>
+<p><a href="https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/index.html">Back to course home page</a></p>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="container">
+<div class="foot-block foot-about">
+  <div class="foot-head">About Me</div>
+  Assistant Professor at <a href="http://eecs.oregonstate.edu/">OSU EECS</a>
+  where I teach and research programming languages.
+  Married to an awesome
+  <a href="http://walkingshawdesign.com/">graphic designer</a>.
+  <!-- Native <a href="http://en.wikipedia.org/wiki/Cascadia_(independence_movement)">Cascadian</a>. -->
+  <!-- We have a horse, four chickens, and a cat. -->
+  <div class="foot-contact osu-email"><a href="mailto:walkiner@oregonstate.edu">walkiner@oregonstate.edu</a></div>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Pages</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/index.html">Home</a>
+    </li>
+    <!--
+    <li class="foot-item">
+      <a href="/news.html">News</a>
+    </li>
+    -->
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/teaching.html">Teaching</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/advising.html">Advising</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/research.html">Research</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/publications.html">Publications</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Projects</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/choice-calculus.html">Choice Calculus</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/xop.html">XOP</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/semantics-first.html">Semantics First</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/hagl.html">Hagl</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Profiles</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://github.com/walkie">GitHub</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://twitter.com/EricWalkingshaw">Twitter</a>
+    </li>
+    <li class="foot-item">
+      <a href="http://scholar.google.com/citations?user=0kPwMDwAAAAJ">Google Scholar</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-madeby">
+  © Eric Walkingshaw, <a href="https://web.engr.oregonstate.edu/~walkiner/legal.html">details</a>
+</div>
+
+  </div>
+</div>
+
+</div>
+<script src="./Prolog Description_files/jquery.min.js.下载"></script>
+<script src="./Prolog Description_files/scripts.js.下载"></script>
+<script src="./Prolog Description_files/MathJax.js.下载" id=""></script>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>

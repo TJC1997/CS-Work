@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/hw/hw3.html -->
+<html lang="en" class="gr__web_engr_oregonstate_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Eric Walkingshaw  - CS 381 -- Homework 3 </title>
+  
+  <link href="./Minilog_files/css" rel="stylesheet" type="text/css">
+  <link href="./Minilog_files/css(1)" rel="stylesheet" type="text/css">
+  <link href="./Minilog_files/all.css" rel="stylesheet" type="text/css">
+  <link href="./Minilog_files/print.css" rel="stylesheet" type="text/css" media="print">
+  <link href="http://web.engr.oregonstate.edu/~walkiner/images/LambdaLand-Bold.png" rel="icon" type="image/png" sizes="610x610">
+  <script async="" src="./Minilog_files/analytics.js.下载"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-55224698-1','auto');
+  ga('send','pageview');
+</script>
+
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body onload="setEmail()" data-gr-c-s-loaded="true" style=""><div id="MathJax_Message" style="display: none;"></div>
+<div id="page">
+
+<div id="header">
+  <div class="container">
+<ul class="nav-list">
+  <li class="nav-elem nav-left nav-head">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/">Eric Walkingshaw</a>
+  </li>
+  <!--
+  <li class="nav-elem nav-left ">
+    <a href="/news.html">News</a>
+  </li>
+  -->
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/teaching.html">Teaching</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/advising.html">Advising</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/research.html">Research</a>
+  </li>
+  <li class="nav-elem nav-left ">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/publications.html">Publications</a>
+  </li>
+  <!--
+  <li class="nav-elem nav-left ">
+    <a href="/blog.html">Blog</a>
+  </li>
+  -->
+  <li class="nav-elem nav-right">
+    <a href="https://github.com/walkie">GitHub</a>
+  </li>
+  <li class="nav-elem nav-right">
+    <a href="https://web.engr.oregonstate.edu/~walkiner/CV-Walkingshaw.pdf">CV</a>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<div id="content">
+  <div class="container">
+<style>
+.grammar td {
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+.center table {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<h1 id="homework-3">Homework #3</h1>
+<p><strong>Due: Tues, Feb 5, 10:59pm</strong></p>
+<div class="bold-code">
+<h2 id="how-to-submit">How to Submit</h2>
+<ul>
+<li><p>Submit one solution <em>per team</em> (each team can have 1–3 members), through <strong><a href="http://engr.oregonstate.edu/teach">TEACH</a></strong>. Put the names and ONID username of all team members as a comment at the top of the file.</p></li>
+<li><p>Your submission should consist of one file named <code>HW3.&lt;your-username&gt;.hs</code>, where <code>&lt;your-username&gt;</code> is the ONID username of the team member who submitted the file.</p></li>
+<li><p>This file <em>must compile without errors or warnings</em> in GHCi. Put all non-working parts of your solution in comments! If your file does not compile, the TAs will not evaluate it.</p></li>
+<li><p>If you can’t solve a problem, you can get partial credit by describing in comments what you tried and where you got stuck.</p></li>
+</ul>
+<h2 id="description">Description</h2>
+<p><strong>MiniLogo</strong> is toy version of the <a href="http://el.media.mit.edu/logo-foundation/what_is_logo/logo_programming.html">Logo language</a> for programming simple 2D graphics. A MiniLogo program describes a graphic by a sequence of <code>move</code> commands that move a pen from one position to another on a <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian plane</a>, drawing lines as it goes. For example, here is a MiniLogo program that draws a 2x2 square with its bottom-left corner at the origin.</p>
+<pre><code>pen up; move (0,0);
+pen down; move (2,0); move (2,2);
+          move (0,2); move (0,0);</code></pre>
+<p>Conceptually, the MiniLogo execution environment consists of two parts:</p>
+<ul>
+<li><p>a <em>canvas</em> rooted at position <code>(0,0)</code> and extending infinitely upward and to the right</p></li>
+<li><p>a <em>pen</em> which is always located at a certain position on the canvas, and which can be in one of two states, either <code>up</code> or <code>down</code></p></li>
+</ul>
+<p>The <code>move</code> command moves the position of the pen from one position to another. If the pen is <code>down</code> when it moves, it draws a straight line connecting the two positions. If the pen is <code>up</code>, it just moves to the new position but does not draw a line. The state of the pen can be changed using the <code>pen</code> command as illustrated in the example program above.</p>
+<p>In addition to basic <code>pen</code> and <code>move</code> commands, a MiniLogo program can define and invoke <em>macros</em>. A macro is a procedure that takes some coordinate values as inputs and performs some commands. Within the body of a macro, commands can refer to input values by name. For example, here is the definition of a macro that draws a 2x2 square starting from an arbitrary origin.</p>
+<pre><code>define square (x,y) {
+  pen up; move (x,y);
+  pen down; move (x+2,y); move (x+2,y+2);
+            move (x,y+2); move (x,y);
+}</code></pre>
+<p>Now, if I want to draw two squares in two different places, later in my program I can <code>call</code> the macro with two different sets of arguments. The following will draw two 2x2 squares, one anchored at position <code>(3,5)</code>, the other anchored at <code>(13,42)</code>.</p>
+<pre><code>call square (3,5); call square (13,42);</code></pre>
+<p>Notice in the definition of the <code>square</code> macro, that we can also perform addition on coordinate values.</p>
+<p>The concrete syntax of the MiniLogo language is defined by the following grammar:</p>
+<div class="center grammar">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><em>num</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">(any natural number)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><em>var</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">(any variable name)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>macro</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">(any macro name)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>prog</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;">ε &nbsp;&nbsp;|&nbsp;&nbsp; <em>cmd</em> <code>;</code> <em>prog</em></td>
+<td>sequence of commands</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>mode</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><code>down</code> &nbsp;&nbsp;|&nbsp;&nbsp; <code>up</code></td>
+<td>pen status</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>expr</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><em>var</em></td>
+<td>variable reference</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><em>num</em></td>
+<td>literal number</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><em>expr</em> <code>+</code> <em>expr</em></td>
+<td>addition expression</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;</td>
+<td style="text-align: center;"></td>
+<td style="text-align: left;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>cmd</em></td>
+<td style="text-align: center;">::=</td>
+<td style="text-align: left;"><code>pen</code> <em>mode</em></td>
+<td>change pen mode</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><code>move</code> <code>(</code> <em>expr</em> <code>,</code> <em>expr</em> <code>)</code></td>
+<td>move pen to a new position</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><code>define</code> <em>macro</em> <code>(</code> <em>var*</em> <code>)</code> <code>{</code> <em>prog</em>&nbsp;<code>}</code> &nbsp;</td>
+<td>define a macro</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">|</td>
+<td style="text-align: left;"><code>call</code> <em>macro</em> <code>(</code> <em>expr*</em> <code>)</code></td>
+<td>invoke a macro</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="tasks">Tasks</h3>
+<ol type="1">
+<li><p>Define the abstract syntax of MiniLogo as a set of Haskell data types. You should use built-in types for <em>num</em>, <em>var</em>, and <em>macro</em>. (If you want to define a type <code>Num</code>, you will have to hide that name from the Prelude).</p></li>
+<li><p>Define a MiniLogo macro <code>line (x1,y1,x2,y2)</code> that (starting from anywhere on the canvas) draws a line segment from <code>(x1,y1)</code> to <code>(x2,y2)</code>.</p>
+<ul>
+<li><p>First, write the macro in MiniLogo <em>concrete syntax</em> (i.e.&nbsp;the notation defined by the grammar and used in the example programs above). Include this definition in a comment in your submission.</p></li>
+<li><p>Second, encode the macro definition as a Haskell value using the data types defined in Task 1. This corresponds to the <em>abstract syntax</em> of MiniLogo. Your Haskell definition should start with something like <code>line = Define "line" ...</code></p></li>
+</ul></li>
+<li><p>Use the <code>line</code> macro you just defined to define a new MiniLogo macro <code>nix (x,y,w,h)</code> that draws a big “X” of width <code>w</code> and height <code>h</code>, starting from position <code>(x,y)</code>. Your definition should not contain any <code>move</code> commands.</p>
+<ul>
+<li><p>First, write the macro in MiniLogo <em>concrete syntax</em> and include this definition in a comment in your submission.</p></li>
+<li><p>Second, encode the macro definition as a Haskell value, representing the <em>abstract syntax</em> of the definition.</p></li>
+</ul></li>
+<li><p>Define a Haskell function <code>steps :: Int -&gt; Prog</code> that constructs a MiniLogo program that draws a staircase of <em>n</em> steps starting from <code>(0,0)</code>. Below is a visual illustration of what the generated program should draw for a couple different applications of <code>steps</code>. You may assume that <em>n ≥ 0</em>.</p>
+<div style="text-align: center">
+<p><img style="width: 400px" src="./Minilog_files/Steps.png" alt="Example output of steps function"></p>
+</div></li>
+<li><p>Define a Haskell function <code>macros :: Prog -&gt; [Macro]</code> that returns a <em>list of the names</em> of all of the macros that are defined anywhere in a given MiniLogo program. Don’t worry about duplicates—if a macro is defined more than once, the resulting list may include multiple copies of its name.</p></li>
+<li><p>Define a Haskell function <code>pretty :: Prog -&gt; String</code> that pretty-prints a MiniLogo program. That is, it transforms the abstract syntax (a Haskell value) into nicely formatted concrete syntax (a string of characters). Your pretty-printed program should look similar to the example programs given above; however, for simplicity you will probably want to print just one command per line.</p>
+<p>In GHCi, you can render a string with newlines by applying the function <code>putStrLn</code>. So, to pretty-print a program <code>p</code> use: <code>putStrLn (pretty p)</code>.</p></li>
+</ol>
+<p>For all of these tasks, you are free to define whatever helper functions you need. You may also use functions from the Prelude and Data.List. You may find the functions <code>intersperse</code> or <code>intercalate</code> in Data.List useful for inserting commas in your implementation of <code>pretty</code>.</p>
+<h3 id="bonus-problems">Bonus Problems</h3>
+<p>These problems are not any harder than the other problems in the assignment. They are included mainly to give you a bit more practice writing Haskell functions that manipulate syntax, if you want that. However, as a little external incentive, you will earn a small amount of extra credit if you complete them both.</p>
+<ol start="7" type="1">
+<li><p>Define a Haskell function <code>optE :: Expr -&gt; Expr</code> that partially evaluates expressions by replacing any additions of literals with the result. For example, given the expression <code>(2+3)+x</code>, <code>optE</code> should return the expression <code>5+x</code>.</p></li>
+<li><p>Define a Haskell function <code>optP :: Prog -&gt; Prog</code> that optimizes all of the expressions contained in a given program using <code>optE</code>.</p></li>
+</ol>
+</div>
+<p><br></p>
+<p><a href="https://web.engr.oregonstate.edu/~walkiner/teaching/cs381-wi19/index.html">Back to course home page</a></p>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="container">
+<div class="foot-block foot-about">
+  <div class="foot-head">About Me</div>
+  Assistant Professor at <a href="http://eecs.oregonstate.edu/">OSU EECS</a>
+  where I teach and research programming languages.
+  Married to an awesome
+  <a href="http://walkingshawdesign.com/">graphic designer</a>.
+  <!-- Native <a href="http://en.wikipedia.org/wiki/Cascadia_(independence_movement)">Cascadian</a>. -->
+  <!-- We have a horse, four chickens, and a cat. -->
+  <div class="foot-contact osu-email"><a href="mailto:walkiner@oregonstate.edu">walkiner@oregonstate.edu</a></div>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Pages</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/index.html">Home</a>
+    </li>
+    <!--
+    <li class="foot-item">
+      <a href="/news.html">News</a>
+    </li>
+    -->
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/teaching.html">Teaching</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/advising.html">Advising</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/research.html">Research</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/publications.html">Publications</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Projects</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/choice-calculus.html">Choice Calculus</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/xop.html">XOP</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/semantics-first.html">Semantics First</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://web.engr.oregonstate.edu/~walkiner/projects/hagl.html">Hagl</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-block foot-map">
+  <div class="foot-head">Profiles</div>
+  <ul class="foot-list">
+    <li class="foot-item">
+      <a href="https://github.com/walkie">GitHub</a>
+    </li>
+    <li class="foot-item">
+      <a href="https://twitter.com/EricWalkingshaw">Twitter</a>
+    </li>
+    <li class="foot-item">
+      <a href="http://scholar.google.com/citations?user=0kPwMDwAAAAJ">Google Scholar</a>
+    </li>
+  </ul>
+</div>
+
+<div class="foot-madeby">
+  © Eric Walkingshaw, <a href="https://web.engr.oregonstate.edu/~walkiner/legal.html">details</a>
+</div>
+
+  </div>
+</div>
+
+</div>
+<script src="./Minilog_files/jquery.min.js.下载"></script>
+<script src="./Minilog_files/scripts.js.下载"></script>
+<script src="./Minilog_files/MathJax.js.下载" id=""></script>
+
+
+</body></html>
