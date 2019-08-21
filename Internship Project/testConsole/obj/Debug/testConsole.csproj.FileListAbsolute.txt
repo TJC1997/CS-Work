@@ -1,0 +1,2 @@
+C:\Users\chento\Desktop\EsiProject\testConsole\bin\Debug\testConsole.exe.config
+C:\Users\chento\Desktop\EsiProject\testConsole\obj\Debug\testConsole.csprojResolveAssemblyReference.cache

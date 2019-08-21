@@ -1,0 +1,10 @@
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\ConsoleTest.exe.config
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\ConsoleTest.exe
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\ConsoleTest.pdb
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\Production.dll
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\Production.pdb
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\obj\Debug\ConsoleTest.csprojResolveAssemblyReference.cache
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\obj\Debug\ConsoleTest.exe
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\obj\Debug\ConsoleTest.pdb
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\MathNet.Numerics.dll
+C:\Users\chento\Desktop\EsiProject\ConsoleTest\bin\Debug\MathNet.Numerics.xml
