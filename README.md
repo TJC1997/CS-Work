@@ -8,4 +8,4 @@
 ### Here are some CS work i did from freshman year until now
 ### Including my resume and recommendation letter from my professor Jennifer
 
-### MY resume Link  https://github.com/TJC1997/CS-Work/blob/master/Reward%20And%20Resume/Resume.pdf
+### MY resume Link https://github.com/TJC1997/CS-Work/blob/master/Reward%20And%20Resume/Yuhang_Chen_Resume_newest.pdf
